@@ -37,7 +37,6 @@ public class PermissionCategoryController implements PermissionCategoryApi {
         return new ResponseEntity<>(response, response.getMessage());
     }
 
-
     @Override
     public ResponseEntity<BaseResponse<?>> delete(String accessToken, PermissionCategoryRequest permissionCategoryRequest) {
         checkPermissions.checkPermission(accessToken);

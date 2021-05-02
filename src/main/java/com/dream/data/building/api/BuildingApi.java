@@ -13,4 +13,5 @@ public interface BuildingApi {
     @PostMapping("/save")
     ResponseEntity<BaseResponse<?>> save(@RequestHeader(name = "Authorization") String accessToken,
                                          @RequestBody BuildingRequest buildingRequest);
+
 }

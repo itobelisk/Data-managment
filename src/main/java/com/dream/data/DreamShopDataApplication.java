@@ -1,12 +1,13 @@
 package com.dream.data;
 
 import com.dream.data.building.buildingparts.service.impl.BuildingPartServiceImpl;
-import com.dream.data.building.floor.service.impl.BuildINgFloorServiceImpl;
+import com.dream.data.building.floor.service.impl.FloorServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
@@ -15,9 +16,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan
 @EnableJpaRepositories
 @EnableJpaAuditing
+@EnableEurekaClient
 public class DreamShopDataApplication implements CommandLineRunner {
     private final BuildingPartServiceImpl buildingPartService;
-    private final BuildINgFloorServiceImpl buildINgFloorServiceImpl;
+    private final FloorServiceImpl buildINgFloorServiceImpl;
 
     public static void main(String[] args) {
         SpringApplication.run(DreamShopDataApplication.class, args);

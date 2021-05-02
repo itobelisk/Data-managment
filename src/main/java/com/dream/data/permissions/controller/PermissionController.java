@@ -15,40 +15,34 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class PermissionController implements PermissionApi {
     private final PermissionServiceImpl permissionService;
-    private final CheckPermissions checkPermissions;
 
     @Override
     public ResponseEntity<BaseResponse<?>> save(String accessToken, PermissionRequest permissionRequest) {
-        checkPermissions.checkPermission(accessToken);
-        BaseResponse<?> response = permissionService.save(permissionRequest);
+        BaseResponse<?> response = permissionService.save(accessToken,permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
     @Override
     public ResponseEntity<BaseResponse<?>> all(String accessToken) {
-        checkPermissions.checkPermission(accessToken);
-        BaseResponse<?> response = permissionService.showAll();
+        BaseResponse<?> response = permissionService.showAll(accessToken);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
     @Override
     public ResponseEntity<BaseResponse<?>> single(String accessToken, PermissionRequest permissionRequest) {
-        checkPermissions.checkPermission(accessToken);
-        BaseResponse<?> response = permissionService.single(permissionRequest);
+        BaseResponse<?> response = permissionService.single(accessToken,permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
     @Override
     public ResponseEntity<BaseResponse<?>> update(String accessToken, PermissionRequest permissionRequest) {
-        checkPermissions.checkPermission(accessToken);
-        BaseResponse<?> response = permissionService.update(permissionRequest);
+        BaseResponse<?> response = permissionService.update(accessToken,permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
     @Override
     public ResponseEntity<BaseResponse<?>> delete(String accessToken, PermissionRequest permissionRequest) {
-        checkPermissions.checkPermission(accessToken);
-        BaseResponse<?> response = permissionService.delete(permissionRequest);
+        BaseResponse<?> response = permissionService.delete(accessToken,permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 }

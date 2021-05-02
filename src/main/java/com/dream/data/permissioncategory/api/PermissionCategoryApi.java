@@ -27,6 +27,6 @@ public interface PermissionCategoryApi {
     ResponseEntity<BaseResponse<?>> delete(@RequestHeader(name = "Authorization") String accessToken,
                                            @RequestBody PermissionCategoryRequest permissionCategoryRequest);
 
-    @PostMapping("/showAll")
+    @PostMapping("/all")
     ResponseEntity<BaseResponse<?>> showAll(@RequestHeader(name = "Authorization") String accessToken);
 }

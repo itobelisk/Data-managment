@@ -13,6 +13,7 @@ import com.dream.data.permissions.entity.PermissionsEntity;
 import com.dream.data.permissions.mapper.PermissionMapper;
 import com.dream.data.permissions.repository.PermissionRepository;
 import com.dream.data.permissions.service.PermissionService;
+import com.dream.data.security.CheckPermissions;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,29 +28,33 @@ public class PermissionServiceImpl implements PermissionService {
     private final PermissionMapper permissionMapper;
     private final PermissionCategoryMapper permissionCategoryMapper;
     private final PermissionCategoriesRepository permissionCategoriesRepository;
+    private final CheckPermissions checkPermissions;
 
     @Override
-    public BaseResponse<?> save(PermissionRequest permissionRequest) {
+    public BaseResponse<?> save(String accessToken, PermissionRequest permissionRequest) {
+        checkPermissions.checkPermission(accessToken);
         PermissionCategory permissionCategory = permissionCategoriesRepository.findByCategoryId(permissionRequest.getPermissionCategory().getId());
         PermissionsEntity permissionsEntity = permissionMapper.toPermissionEntity(permissionRequest, permissionCategory);
         PermissionResponse permissionResponse = permissionMapper.toPermissionResponse(permissionRepository.save(permissionsEntity));
         return new BaseResponse<>(new Date(), true, HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED, permissionResponse);
     }
 
-    @Override
-    public BaseResponse<?> showAll() {
+    public BaseResponse<?> showAll(String accessToken) {
+        checkPermissions.checkPermission(accessToken);
         List<PermissionResponse> permissionResponse = permissionMapper.toPermissionResponseList(permissionRepository.findAll());
         return new BaseResponse<>(new Date(), true, HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED, permissionResponse);
     }
 
     @Override
-    public BaseResponse<?> single(PermissionRequest permissionRequest) {
+    public BaseResponse<?> single(String accessToken, PermissionRequest permissionRequest) {
+        checkPermissions.checkPermission(accessToken);
         PermissionResponse permissionResponse = permissionMapper.toPermissionResponse(permissionRepository.getOne(permissionRequest.getId()));
         return new BaseResponse<>(new Date(), true, HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED, permissionResponse);
     }
 
     @Override
-    public BaseResponse<?> update(PermissionRequest permissionRequest) {
+    public BaseResponse<?> update(String accessToken, PermissionRequest permissionRequest) {
+        checkPermissions.checkPermission(accessToken);
         checkPermissionRequest(permissionRequest);
         checkPermissionCategoryRequest(permissionRequest.getPermissionCategory());
         PermissionsEntity permissionsEntity = permissionRepository.getOne(permissionRequest.getId());
@@ -64,7 +69,8 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public BaseResponse<?> delete(PermissionRequest permissionRequest) {
+    public BaseResponse<?> delete(String accessToken, PermissionRequest permissionRequest) {
+        checkPermissions.checkPermission(accessToken);
         checkPermissionRequest(permissionRequest);
         permissionRepository.deleteById(permissionRequest.getId());
         return new BaseResponse<>(new Date(), true, HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED, null);
