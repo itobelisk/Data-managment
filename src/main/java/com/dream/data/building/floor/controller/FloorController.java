@@ -15,7 +15,6 @@ public class FloorController implements FloorApi {
 
     private final FloorServiceImpl floorServiceImpl;
 
-
     @Override
     public ResponseEntity<BaseResponse<?>> all(String accessToken) {
         BaseResponse<?> response = floorServiceImpl.all(accessToken);

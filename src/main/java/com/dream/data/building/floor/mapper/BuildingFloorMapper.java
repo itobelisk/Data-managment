@@ -5,7 +5,6 @@ import com.dream.data.building.floor.dao.response.FloorResponse;
 import com.dream.data.building.floor.entity.Floor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

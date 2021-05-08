@@ -7,6 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -17,7 +19,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 @EnableJpaAuditing
 @EnableEurekaClient
-public class DreamShopDataApplication implements CommandLineRunner {
+public class DreamShopDataApplication extends SpringBootServletInitializer implements CommandLineRunner {
     private final BuildingPartServiceImpl buildingPartService;
     private final FloorServiceImpl buildINgFloorServiceImpl;
 
@@ -29,5 +31,10 @@ public class DreamShopDataApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         buildingPartService.addBuildingPart();
         buildINgFloorServiceImpl.addFloors();
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(DreamShopDataApplication.class);
     }
 }

@@ -31,7 +31,6 @@ public class FloorServiceImpl implements FloorService {
         return new BaseResponse<>(new Date(), true, HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED, permissionResponse);
     }
 
-
     @Override
     public void addFloors() {
         List<Floor> floorArrayList = new ArrayList<>();
@@ -45,6 +44,4 @@ public class FloorServiceImpl implements FloorService {
             buildingFloorRepository.saveAll(floorArrayList);
         }
     }
-
-
 }

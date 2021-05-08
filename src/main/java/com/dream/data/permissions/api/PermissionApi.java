@@ -14,7 +14,6 @@ public interface PermissionApi {
     @PostMapping("/save")
     ResponseEntity<BaseResponse<?>> save(@RequestHeader(name = "Authorization") String accessToken,
                                          @RequestBody PermissionRequest permissionRequest);
-
     @PostMapping("/all")
     ResponseEntity<BaseResponse<?>> all(@RequestHeader(name = "Authorization") String accessToken);
 
