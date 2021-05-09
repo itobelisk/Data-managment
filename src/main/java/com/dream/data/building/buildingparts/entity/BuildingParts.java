@@ -18,8 +18,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
+@Builder
 @Table(name = "building_parts")
 public class BuildingParts extends BaseEntity {
     @OneToMany

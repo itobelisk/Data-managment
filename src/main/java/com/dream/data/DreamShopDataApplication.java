@@ -19,19 +19,19 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories
 @EnableJpaAuditing
 @EnableEurekaClient
-public class DreamShopDataApplication extends SpringBootServletInitializer implements CommandLineRunner {
-    private final BuildingPartServiceImpl buildingPartService;
-    private final FloorServiceImpl buildINgFloorServiceImpl;
+public class DreamShopDataApplication extends SpringBootServletInitializer {
+//    private final BuildingPartServiceImpl buildingPartService;
+//    private final FloorServiceImpl buildINgFloorServiceImpl;
 
     public static void main(String[] args) {
         SpringApplication.run(DreamShopDataApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        buildingPartService.addBuildingPart();
-        buildINgFloorServiceImpl.addFloors();
-    }
+//    @Override
+//    public void run(String... args) throws Exception {
+//        buildingPartService.addBuildingPart();
+//        buildINgFloorServiceImpl.addFloors();
+//    }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

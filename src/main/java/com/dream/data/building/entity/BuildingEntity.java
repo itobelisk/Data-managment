@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
+@Builder
 @Table(name = "building")
 public class BuildingEntity extends BaseEntity {
 

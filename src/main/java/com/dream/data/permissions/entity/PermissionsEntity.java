@@ -19,8 +19,8 @@ import javax.persistence.Table;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
+@Builder
 @Table(name = "permissions")
 public class PermissionsEntity extends BaseEntity {
     @Column(columnDefinition = "varchar 255 default '")

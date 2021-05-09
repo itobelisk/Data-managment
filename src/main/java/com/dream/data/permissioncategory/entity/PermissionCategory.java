@@ -19,15 +19,15 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
+@Builder
 @Table(name = "permission_category")
 public class PermissionCategory extends BaseEntity {
 
     @OneToMany(mappedBy = "permissionCategory")
     private List<PermissionsEntity> permissionCategoryList;
 
-    @Column(columnDefinition = "varchar 255 default '")
+    @Column(columnDefinition = "varchar 255 default ''")
     private String permissionCategoryName;
 
 }

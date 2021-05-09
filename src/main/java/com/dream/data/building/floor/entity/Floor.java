@@ -15,9 +15,9 @@ import java.util.List;
 
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Entity
 @Table(name = "floor")
 public class Floor extends BaseEntity {
