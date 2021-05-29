@@ -21,13 +21,13 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "permission_category")
+//@Table(name = "permission_cat")
 public class PermissionCategory extends BaseEntity {
 
     @OneToMany(mappedBy = "permissionCategory")
     private List<PermissionsEntity> permissionCategoryList;
 
-    @Column(columnDefinition = "varchar 255 default ''")
+//    @Column(name = "name", columnDefinition = "varchar 255 default ''")
     private String permissionCategoryName;
 
 }

@@ -8,27 +8,23 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Builder
-@Table(name = "permissions")
+//@Table(name = "permissions")
 public class PermissionsEntity extends BaseEntity {
-    @Column(columnDefinition = "varchar 255 default '")
+
+//    @Column(name = "permission_name", columnDefinition = "varchar 255 default '' ")
     private String permissionName;
 
     private Boolean isActive = false;
 
-    @ManyToOne(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-    @JoinColumn(name = "permission_id", nullable = false, referencedColumnName = "id")
+    @ManyToOne
+    @JoinColumn(name = "permissions_id", nullable = false, referencedColumnName = "id")
     private PermissionCategory permissionCategory;
 }

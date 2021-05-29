@@ -14,6 +14,6 @@ public class CheckPermissions {
 
     @Async
     public void checkPermission(String accessToken) {
-        securityCheckRestTemplateActions.sendPostRequestCheck(accessToken, AdminLinks.ROLE_NEW);
+        securityCheckRestTemplateActions.sendPostRequestCheck(accessToken, AdminLinks.CHECK_USER);
     }
 }

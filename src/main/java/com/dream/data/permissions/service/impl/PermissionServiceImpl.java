@@ -33,7 +33,7 @@ public class PermissionServiceImpl implements PermissionService {
     @Override
     public BaseResponse<?> save(String accessToken, PermissionRequest permissionRequest) {
         checkPermissions.checkPermission(accessToken);
-        PermissionCategory permissionCategory = permissionCategoriesRepository.findByCategoryId(permissionRequest.getPermissionCategory().getId());
+        PermissionCategory permissionCategory = permissionCategoriesRepository.getOne(permissionRequest.getPermissionCategory().getId());
         PermissionsEntity permissionsEntity = permissionMapper.toPermissionEntity(permissionRequest, permissionCategory);
         PermissionResponse permissionResponse = permissionMapper.toPermissionResponse(permissionRepository.save(permissionsEntity));
         return new BaseResponse<>(new Date(), true, HttpStatus.ACCEPTED.value(), HttpStatus.ACCEPTED, permissionResponse);

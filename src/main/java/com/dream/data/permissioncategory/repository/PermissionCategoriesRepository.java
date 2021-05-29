@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Optional;
 
 public interface PermissionCategoriesRepository extends JpaRepository<PermissionCategory,Long> {
-    @Query("select e from PermissionCategory e where e.id=?1")
-    PermissionCategory findByCategoryId(Long id);
+
 
 }
