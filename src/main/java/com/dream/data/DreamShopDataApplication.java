@@ -6,6 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import javax.validation.constraints.NotNull;
 
 @SpringBootApplication
 @EnableEurekaClient
@@ -22,6 +26,17 @@ public class DreamShopDataApplication extends SpringBootServletInitializer {
 //        buildingPartService.addBuildingPart();
 //        buildINgFloorServiceImpl.addFloors();
 //    }
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(@NotNull org.springframework.web.servlet.config.annotation.CorsRegistry registry) {
+                registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE");
+            }
+        };
+
+    }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {

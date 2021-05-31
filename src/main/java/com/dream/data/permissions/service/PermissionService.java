@@ -4,13 +4,13 @@ import com.dream.data.base.BaseResponse;
 import com.dream.data.permissions.dao.request.PermissionRequest;
 
 public interface PermissionService {
-    BaseResponse<?> save(String accessToken, PermissionRequest permissionRequest);
+    BaseResponse<?> save(PermissionRequest permissionRequest);
 
-    BaseResponse<?> showAll(String accessToken);
+    BaseResponse<?> all();
 
-    BaseResponse<?> single(String accessToken, PermissionRequest permissionRequest);
+    BaseResponse<?> single(PermissionRequest permissionRequest);
 
-    BaseResponse<?> update(String accessToken, PermissionRequest permissionRequest);
+    BaseResponse<?> update(PermissionRequest permissionRequest);
 
-    BaseResponse<?> delete(String accessToken, PermissionRequest permissionRequest);
+    BaseResponse<?> delete(PermissionRequest permissionRequest);
 }

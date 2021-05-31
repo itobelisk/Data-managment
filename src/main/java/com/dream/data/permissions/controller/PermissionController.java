@@ -16,33 +16,33 @@ public class PermissionController implements PermissionApi {
     private final PermissionServiceImpl permissionService;
 
     @Override
-    public ResponseEntity<BaseResponse<?>> save(String accessToken, PermissionRequest permissionRequest) {
-        BaseResponse<?> response = permissionService.save(accessToken, permissionRequest);
+    public ResponseEntity<BaseResponse<?>> save(PermissionRequest permissionRequest) {
+        BaseResponse<?> response = permissionService.save(permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
     @Override
-    public ResponseEntity<BaseResponse<?>> all(String accessToken) {
-        BaseResponse<?> response = permissionService.showAll(accessToken);
+    public ResponseEntity<BaseResponse<?>> all() {
+        BaseResponse<?> response = permissionService.all();
         return new ResponseEntity<>(response, response.getMessage());
        
     }
 
     @Override
-    public ResponseEntity<BaseResponse<?>> single(String accessToken, PermissionRequest permissionRequest) {
-        BaseResponse<?> response = permissionService.single(accessToken, permissionRequest);
+    public ResponseEntity<BaseResponse<?>> single(PermissionRequest permissionRequest) {
+        BaseResponse<?> response = permissionService.single(permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
     @Override
-    public ResponseEntity<BaseResponse<?>> update(String accessToken, PermissionRequest permissionRequest) {
-        BaseResponse<?> response = permissionService.update(accessToken, permissionRequest);
+    public ResponseEntity<BaseResponse<?>> update(PermissionRequest permissionRequest) {
+        BaseResponse<?> response = permissionService.update(permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
     @Override
-    public ResponseEntity<BaseResponse<?>> delete(String accessToken, PermissionRequest permissionRequest) {
-        BaseResponse<?> response = permissionService.delete(accessToken, permissionRequest);
+    public ResponseEntity<BaseResponse<?>> delete(PermissionRequest permissionRequest) {
+        BaseResponse<?> response = permissionService.delete(permissionRequest);
         return new ResponseEntity<>(response, response.getMessage());
     }
 
